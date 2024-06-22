@@ -55,3 +55,14 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+vim.keymap.set("n", "<leader>nb", ":enew<CR>", {})
+
+-- Move between panes
+
+vim.keymap.set("n", "<leader>mj", "<C-W>j<CR>", {})
+vim.keymap.set("n", "<leader>mk", "<C-W>k<CR>", {})
+vim.keymap.set("n", "<leader>mh", "<C-W>h<CR>", {})
+vim.keymap.set("n", "<leader>ml", "<C-W>l<CR>", {})
+
+
+vim.keymap.set("n", "<c-q>", "<cmd>call Black()<CR>", {})
