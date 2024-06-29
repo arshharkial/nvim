@@ -9,7 +9,9 @@ return {
 
 	config = function()
 		require("telescope").setup({
-			defaults = { file_ignore_patterns = { "node_modules" } },
+			defaults = {
+				file_ignore_patterns = { "node_modules", "build", "dist", "yarn.lock" },
+			},
 		})
 
 		local builtin = require("telescope.builtin")
