@@ -1,4 +1,3 @@
-
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -12,20 +11,20 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
+	require("vim-with-me").StartVimWithMe()
 end)
 vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
+	require("vim-with-me").StopVimWithMe()
 end)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -42,17 +41,13 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
-)
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>")
+vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
 vim.keymap.set("n", "<leader>nb", ":enew<CR>", {})
@@ -63,6 +58,11 @@ vim.keymap.set("n", "<leader>mj", "<C-W>j<CR>", {})
 vim.keymap.set("n", "<leader>mk", "<C-W>k<CR>", {})
 vim.keymap.set("n", "<leader>mh", "<C-W>h<CR>", {})
 vim.keymap.set("n", "<leader>ml", "<C-W>l<CR>", {})
-
+vim.keymap.set("n", "<leader>sv", function()
+	vim.cmd("vs")
+end)
+vim.keymap.set("n", "<leader>sh", function()
+	vim.cmd("split")
+end)
 
 vim.keymap.set("n", "<c-q>", "<cmd>call Black()<CR>", {})
