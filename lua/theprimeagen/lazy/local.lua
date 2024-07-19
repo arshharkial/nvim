@@ -1,4 +1,3 @@
-
 local local_plugins = {
     {
         "ThePrimeagen/harpoon",
@@ -12,18 +11,19 @@ local local_plugins = {
             vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
             vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-            vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-            vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
-            vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
-            vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
-            vim.keymap.set("n", "<leader><C-h>", function() harpoon:list():replace_at(1) end)
-            vim.keymap.set("n", "<leader><C-t>", function() harpoon:list():replace_at(2) end)
-            vim.keymap.set("n", "<leader><C-n>", function() harpoon:list():replace_at(3) end)
-            vim.keymap.set("n", "<leader><C-s>", function() harpoon:list():replace_at(4) end)
+            vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
+            vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
+            vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
+            vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+            vim.keymap.set("n", "<leader><C-1>", function() harpoon:list():replace_at(1) end)
+            vim.keymap.set("n", "<leader><C-2>", function() harpoon:list():replace_at(2) end)
+            vim.keymap.set("n", "<leader><C-3>", function() harpoon:list():replace_at(3) end)
+            vim.keymap.set("n", "<leader><C-4>", function() harpoon:list():replace_at(4) end)
         end
     },
     {
-        "vim-apm", dir = "~/personal/vim-apm",
+        "vim-apm",
+        dir = "~/personal/vim-apm",
         config = function()
             --[[
             local apm = require("vim-apm")
@@ -34,10 +34,10 @@ local local_plugins = {
         end
     },
     {
-        "vim-with-me", dir = "~/personal/vim-with-me",
+        "vim-with-me",
+        dir = "~/personal/vim-with-me",
         config = function() end
     },
 }
 
 return local_plugins
-
