@@ -11,14 +11,15 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>vwm", function()
-	require("vim-with-me").StartVimWithMe()
+    require("vim-with-me").StartVimWithMe()
 end)
 vim.keymap.set("n", "<leader>svwm", function()
-	require("vim-with-me").StopVimWithMe()
+    require("vim-with-me").StopVimWithMe()
 end)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -47,22 +48,25 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/the
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
+    vim.cmd("so")
 end)
 
+-- Create Empty Buffer
 vim.keymap.set("n", "<leader>nb", ":enew<CR>", {})
 
 -- Move between panes
-
 vim.keymap.set("n", "<leader>mj", "<C-W>j<CR>", {})
 vim.keymap.set("n", "<leader>mk", "<C-W>k<CR>", {})
 vim.keymap.set("n", "<leader>mh", "<C-W>h<CR>", {})
 vim.keymap.set("n", "<leader>ml", "<C-W>l<CR>", {})
+
+-- Split Panes
 vim.keymap.set("n", "<leader>sv", function()
-	vim.cmd("vs")
+    vim.cmd("vs")
 end)
 vim.keymap.set("n", "<leader>sh", function()
-	vim.cmd("split")
+    vim.cmd("split")
 end)
 
-vim.keymap.set("n", "<c-q>", "<cmd>call Black()<CR>", {})
+vim.keymap.set("n", "<leader>ce", ":CloakEnable<CR>", {})
+vim.keymap.set("n", "<leader>cd", ":CloakDisable<CR>", {})
