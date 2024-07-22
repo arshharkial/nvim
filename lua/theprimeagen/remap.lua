@@ -68,5 +68,9 @@ vim.keymap.set("n", "<leader>sh", function()
     vim.cmd("split")
 end)
 
-vim.keymap.set("n", "<leader>ce", ":CloakEnable<CR>", {})
-vim.keymap.set("n", "<leader>cd", ":CloakDisable<CR>", {})
+vim.keymap.set("n", "<leader>ce", ":CloakEnable<CR>", { silent = true })
+vim.keymap.set("n", "<leader>cd", ":CloakDisable<CR>", { silent = true })
+
+-- Toggle Wrap
+vim.keymap.set("n", "<C-s>", ":set wrap!<CR>", { silent = true })
+vim.opt.conceallevel = 1
