@@ -31,6 +31,10 @@ return {
                 "gopls",
                 "tsserver",
                 "ruff",
+                "zls",
+                "marksman",
+                "dockerls",
+                "clangd",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
