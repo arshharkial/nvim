@@ -68,9 +68,18 @@ vim.keymap.set("n", "<leader>sh", function()
     vim.cmd("split")
 end)
 
-vim.keymap.set("n", "<leader>ce", ":CloakEnable<CR>", { silent = true })
-vim.keymap.set("n", "<leader>cd", ":CloakDisable<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ct", ":CloakToggle<CR>", { silent = true })
 
 -- Toggle Wrap
 vim.keymap.set("n", "<C-s>", ":set wrap!<CR>", { silent = true })
 vim.opt.conceallevel = 1
+
+-- TODO Comments
+
+vim.keymap.set("n", "]t", function()
+    require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+    require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
