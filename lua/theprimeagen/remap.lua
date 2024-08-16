@@ -10,13 +10,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
-
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
@@ -44,7 +37,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>")
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
@@ -54,20 +46,6 @@ end)
 -- Create Empty Buffer
 vim.keymap.set("n", "<leader>nb", ":enew<CR>", {})
 
--- Move between panes
-vim.keymap.set("n", "<leader>mj", "<C-W>j<CR>", {})
-vim.keymap.set("n", "<leader>mk", "<C-W>k<CR>", {})
-vim.keymap.set("n", "<leader>mh", "<C-W>h<CR>", {})
-vim.keymap.set("n", "<leader>ml", "<C-W>l<CR>", {})
-
--- Split Panes
-vim.keymap.set("n", "<leader>sv", function()
-    vim.cmd("vs")
-end)
-vim.keymap.set("n", "<leader>sh", function()
-    vim.cmd("split")
-end)
-
 vim.keymap.set("n", "<leader>ct", ":CloakToggle<CR>", { silent = true })
 
 -- Toggle Wrap
@@ -76,11 +54,11 @@ vim.opt.conceallevel = 1
 
 -- TODO Comments
 
-vim.keymap.set("n", "]t", function()
+vim.keymap.set("n", "<leader>]", function()
     require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })
 
-vim.keymap.set("n", "[t", function()
+vim.keymap.set("n", "<leader>[", function()
     require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
