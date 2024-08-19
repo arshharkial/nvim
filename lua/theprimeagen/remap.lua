@@ -63,3 +63,9 @@ vim.keymap.set("n", "<leader>[", function()
 end, { desc = "Previous todo comment" })
 
 vim.keymap.set("n", "<leader>pt", ":TodoTelescope<CR>", { silent = true })
+vim.keymap.set("n", "<leader>db", ":DBUI<CR>", { silent = true })
+vim.keymap.set("n", "<M-=>", "<C-w>+<CR>", { noremap = false, silent = true })
+vim.keymap.set("n", "<M-->", "<C-w>-<CR>", { noremap = false, silent = true })
+vim.keymap.set("n", "<M-+>", "<C-w>><CR>", { noremap = false, silent = true })
+vim.keymap.set("n", "<M-_>", "<C-w><<CR>", { noremap = false, silent = true })
+
