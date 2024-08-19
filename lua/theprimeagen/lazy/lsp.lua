@@ -11,6 +11,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "jay-babu/mason-nvim-dap.nvim",
     },
 
     config = function()
@@ -23,7 +24,20 @@ return {
             cmp_lsp.default_capabilities()
         )
         require("fidget").setup({})
-        require("mason").setup()
+        require("mason-nvim-dap").setup({
+            ensure_installed = {
+                "python",
+            },
+        })
+        require("mason").setup({
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗"
+                }
+            },
+        })
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
@@ -81,6 +95,8 @@ return {
                 { name = "buffer" },
             }),
         })
+
+        vim.diagnostic.open_float()
 
         vim.diagnostic.config({
             -- update_in_insert = true,
