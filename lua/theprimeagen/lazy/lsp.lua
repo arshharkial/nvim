@@ -45,6 +45,7 @@ return {
                 "gopls",
                 "tsserver",
                 "ruff",
+                "pyright",
                 "zls",
                 "marksman",
                 "dockerls",
@@ -95,8 +96,6 @@ return {
                 { name = "buffer" },
             }),
         })
-
-        vim.diagnostic.open_float()
 
         vim.diagnostic.config({
             -- update_in_insert = true,
