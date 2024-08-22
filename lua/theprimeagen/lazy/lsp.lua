@@ -88,6 +88,8 @@ return {
                 ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
                 ["<C-y>"] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
+                ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- scroll up
+                ["<C-d>"] = cmp.mapping.scroll_docs(4), -- scroll down
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
