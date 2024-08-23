@@ -64,8 +64,17 @@ end, { desc = "Previous todo comment" })
 
 vim.keymap.set("n", "<leader>pt", ":TodoTelescope<CR>", { silent = true })
 vim.keymap.set("n", "<leader>db", ":DBUI<CR>", { silent = true })
-vim.keymap.set("n", "<M-=>", "<C-w>+<CR>", { noremap = false, silent = true })
-vim.keymap.set("n", "<M-->", "<C-w>-<CR>", { noremap = false, silent = true })
-vim.keymap.set("n", "<M-+>", "<C-w>><CR>", { noremap = false, silent = true })
-vim.keymap.set("n", "<M-_>", "<C-w><<CR>", { noremap = false, silent = true })
+-- vim.keymap.set("n", "<M-.>", "<C-w>+<CR>", { noremap = false, silent = true })
+-- vim.keymap.set("n", "<M-,>", "<C-w>-<CR>", { noremap = false, silent = true })
+-- vim.keymap.set("n", "<C->>", "<C-w>><CR>", { noremap = false, silent = true })
+-- vim.keymap.set("n", "<C-<>", "<C-w><<CR>", { noremap = false, silent = true })
 
+
+vim.keymap.set('n', '<leader>hy', '<cmd>HurlYank<CR>',
+    { desc = 'Run hurl file in buffer and yank contents to the register "*"' })
+vim.keymap.set('n', '<leader>hr', '<cmd>HurlRun<CR>',
+    { desc = 'Run hurl file in buffer and paste it\'s content in:o a split window' })
+vim.keymap.set('n', '<leader>hv', '<cmd>HurlRunVerbose<CR>',
+    { desc = 'Run hurl file and get additional meta info along with it' })
+vim.keymap.set('n', '<leader>hh', '<cmd>CurlGoFromCursor<CR>',
+    { desc = 'Run a curl request from the url under the cursor' })
