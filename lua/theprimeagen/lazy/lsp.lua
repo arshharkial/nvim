@@ -12,6 +12,8 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
         "jay-babu/mason-nvim-dap.nvim",
+        "jay-babu/mason-null-ls.nvim",
+        "nvimtools/none-ls.nvim"
     },
 
     config = function()
@@ -23,7 +25,18 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities()
         )
+        local null_ls = require("null-ls")
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.formatting.mdformat,
+                null_ls.builtins.formatting.sql_formatter,
+                null_ls.builtins.formatting.yamlfmt,
+            }
+        })
         require("fidget").setup({})
+        require("mason-null-ls").setup({
+            ensure_installed = { "stylua", "jq", "mdformat", "sql-formatter", "yamlfmt", },
+        })
         require("mason-nvim-dap").setup({
             ensure_installed = {
                 "python",
