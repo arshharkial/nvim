@@ -82,6 +82,18 @@ return {
         },
         config = function(_, opts)
             local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+            local dap = require "dap"
+            dap.configurations = {
+                python = {
+                    {
+                        type = 'python',
+                        request = 'launch',
+                        name = 'Django',
+                        program = vim.fn.getcwd() .. '/manage.py',
+                        args = { 'runserver' },
+                    }
+                }
+            }
             require("dap-python").setup(path)
         end,
     },
