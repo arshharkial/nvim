@@ -31,11 +31,12 @@ return {
                 null_ls.builtins.formatting.mdformat,
                 null_ls.builtins.formatting.sql_formatter,
                 null_ls.builtins.formatting.yamlfmt,
+                null_ls.builtins.formatting.prettierd,
             }
         })
         require("fidget").setup({})
         require("mason-null-ls").setup({
-            ensure_installed = { "stylua", "jq", "mdformat", "sql-formatter", "yamlfmt", },
+            ensure_installed = { "stylua", "jq", "prettierd", "mdformat", "sql-formatter", "yamlfmt", },
         })
         require("mason-nvim-dap").setup({
             ensure_installed = {
