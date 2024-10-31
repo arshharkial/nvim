@@ -59,7 +59,6 @@ return {
                 "gopls",
                 "tsserver",
                 "ruff",
-                "pyright",
                 "zls",
                 "marksman",
                 "dockerls",
