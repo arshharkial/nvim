@@ -60,7 +60,7 @@ return {
                 "tsserver",
                 "ruff",
                 "zls",
-                "pylsp",
+                "pyright",
                 "marksman",
                 "dockerls",
                 "clangd",
