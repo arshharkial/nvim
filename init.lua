@@ -277,6 +277,78 @@ vim.keymap.set('n', '<leader>db', ':DBUI<CR>', { silent = true })
 -- vim.keymap.set('n', '<leader>hv', '<cmd>HurlRunVerbose<CR>', { desc = 'Run hurl file and get additional meta info along with it' })
 -- vim.keymap.set('n', '<leader>hh', '<cmd>CurlGoFromCursor<CR>', { desc = 'Run a curl request from the url under the cursor' })
 
+-- vim.opt.guicursor = ''
+
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
+vim.opt.undofile = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = 'yes'
+vim.opt.isfname:append '@-@'
+
+vim.opt.updatetime = 50
+
+vim.opt.colorcolumn = '80'
+local autocmd = vim.api.nvim_create_autocmd
+autocmd('LspAttach', {
+  callback = function(e)
+    local opts = { buffer = e.buf }
+    vim.keymap.set('n', 'gd', function()
+      vim.lsp.buf.definition()
+    end, opts)
+    vim.keymap.set('n', 'K', function()
+      vim.lsp.buf.hover()
+    end, opts)
+    vim.keymap.set('n', '<leader>vws', function()
+      vim.lsp.buf.workspace_symbol()
+    end, opts)
+    vim.keymap.set('n', '<leader>vd', function()
+      vim.diagnostic.open_float()
+    end, opts)
+    vim.keymap.set('n', '<leader>vca', function()
+      vim.lsp.buf.code_action()
+    end, opts)
+    vim.keymap.set('n', '<leader>vrr', function()
+      vim.lsp.buf.references()
+    end, opts)
+    vim.keymap.set('n', '<leader>vrn', function()
+      vim.lsp.buf.rename()
+    end, opts)
+    vim.keymap.set('i', '<C-h>', function()
+      vim.lsp.buf.signature_help()
+    end, opts)
+    vim.keymap.set('n', '[d', function()
+      vim.diagnostic.goto_next()
+    end, opts)
+    vim.keymap.set('n', ']d', function()
+      vim.diagnostic.goto_prev()
+    end, opts)
+  end,
+})
+
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -562,6 +634,36 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
+      local cmp = require 'cmp'
+      local cmp_select = { behavior = cmp.SelectBehavior.Select }
+      cmp.setup {
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+          end,
+        },
+        mapping = cmp.mapping.preset.insert {
+          ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+          ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- scroll up
+          ['<C-d>'] = cmp.mapping.scroll_docs(4), -- scroll down
+        },
+        performance = {
+          max_view_entries = 50, -- show more than 6 items!
+        },
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' }, -- For luasnip users.
+          { name = 'codeium' },
+        }, {
+          { name = 'buffer' },
+        }),
+        -- experimental = {
+        --     ghost_text = true,
+        -- },
+      }
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
