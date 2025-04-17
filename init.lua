@@ -650,9 +650,6 @@ require('lazy').setup({
           ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- scroll up
           ['<C-d>'] = cmp.mapping.scroll_docs(4), -- scroll down
         },
-        performance = {
-          max_view_entries = 50, -- show more than 6 items!
-        },
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'luasnip' }, -- For luasnip users.
