@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -227,7 +227,8 @@ vim.keymap.set('i', '<C-c>', '<Esc>')
 
 vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
-vim.keymap.set('n', '<leader>vt', ':vsplit term://%:p:h//zsh<CR>')
+vim.keymap.set('n', '<leader>vt', ':vsplit')
+vim.keymap.set('n', '<leader>ht', ':split')
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
 
 vim.keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz')
