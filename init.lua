@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -634,33 +634,33 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
-      local cmp = require 'cmp'
-      local cmp_select = { behavior = cmp.SelectBehavior.Select }
-      cmp.setup {
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-          end,
-        },
-        mapping = cmp.mapping.preset.insert {
-          ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-          ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- scroll up
-          ['<C-d>'] = cmp.mapping.scroll_docs(4), -- scroll down
-        },
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' }, -- For luasnip users.
-          { name = 'codeium' },
-        }, {
-          { name = 'buffer' },
-        }),
-        -- experimental = {
-        --     ghost_text = true,
-        -- },
-      }
+      -- local cmp = require 'cmp'
+      -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+      -- cmp.setup {
+      --   snippet = {
+      --     expand = function(args)
+      --       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      --     end,
+      --   },
+      --   mapping = cmp.mapping.preset.insert {
+      --     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+      --     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+      --     ['<C-y>'] = cmp.mapping.confirm { select = true },
+      --     ['<C-Space>'] = cmp.mapping.complete(),
+      --     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- scroll up
+      --     ['<C-d>'] = cmp.mapping.scroll_docs(4), -- scroll down
+      --   },
+      --   sources = cmp.config.sources({
+      --     { name = 'nvim_lsp' },
+      --     { name = 'luasnip' }, -- For luasnip users.
+      --     { name = 'codeium' },
+      --   }, {
+      --     { name = 'buffer' },
+      --   }),
+      --   -- experimental = {
+      --   --     ghost_text = true,
+      --   -- },
+      -- }
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -841,7 +841,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -937,7 +937,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'ruff_format' },
+        python = { 'pyright' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
