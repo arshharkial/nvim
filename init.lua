@@ -904,7 +904,20 @@ require('lazy').setup({
       }
     end,
   },
-
+  -- treesitter-context
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    lazy = false, -- or true if you want it to load on demand
+    config = function()
+      require('treesitter-context').setup {
+        enable = true,
+        max_lines = 5, -- show up to 5 context lines
+        trim_scope = 'outer', -- or "inner"
+        mode = 'cursor', -- "cursor" or "topline"
+        separator = '─', -- you can add a line between context and code
+      }
+    end,
+  },
   { -- Autoformat
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
