@@ -265,7 +265,7 @@ vim.keymap.set('n', '<leader>[', function()
   require('todo-comments').jump_prev()
 end, { desc = 'Previous todo comment' })
 
-vim.keymap.set('n', '<leader>pt', ':TodoTelescope<CR>', { silent = true })
+vim.keymap.set('n', '<leader>st', ':TodoTelescope<CR>', { silent = true })
 vim.keymap.set('n', '<leader>db', ':DBUI<CR>', { silent = true })
 -- vim.keymap.set("n", "<M-.>", "<C-w>+<CR>", { noremap = false, silent = true })
 -- vim.keymap.set("n", "<M-,>", "<C-w>-<CR>", { noremap = false, silent = true })
@@ -634,33 +634,33 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
-      local cmp = require 'cmp'
-      local cmp_select = { behavior = cmp.SelectBehavior.Select }
-      cmp.setup {
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-          end,
-        },
-        mapping = cmp.mapping.preset.insert {
-          ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-          ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- scroll up
-          ['<C-d>'] = cmp.mapping.scroll_docs(4), -- scroll down
-        },
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' }, -- For luasnip users.
-          { name = 'codeium' },
-        }, {
-          { name = 'buffer' },
-        }),
-        -- experimental = {
-        --     ghost_text = true,
-        -- },
-      }
+      -- local cmp = require 'cmp'
+      -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+      -- cmp.setup {
+      --   snippet = {
+      --     expand = function(args)
+      --       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      --     end,
+      --   },
+      --   mapping = cmp.mapping.preset.insert {
+      --     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+      --     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+      --     ['<C-y>'] = cmp.mapping.confirm { select = true },
+      --     ['<C-Space>'] = cmp.mapping.complete(),
+      --     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- scroll up
+      --     ['<C-d>'] = cmp.mapping.scroll_docs(4), -- scroll down
+      --   },
+      --   sources = cmp.config.sources({
+      --     { name = 'nvim_lsp' },
+      --     { name = 'luasnip' }, -- For luasnip users.
+      --     { name = 'codeium' },
+      --   }, {
+      --     { name = 'buffer' },
+      --   }),
+      --   -- experimental = {
+      --   --     ghost_text = true,
+      --   -- },
+      -- }
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -842,6 +842,7 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
+        ruff = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -903,7 +904,20 @@ require('lazy').setup({
       }
     end,
   },
-
+  -- treesitter-context
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    lazy = false, -- or true if you want it to load on demand
+    config = function()
+      require('treesitter-context').setup {
+        enable = true,
+        max_lines = 5, -- show up to 5 context lines
+        trim_scope = 'outer', -- or "inner"
+        mode = 'cursor', -- "cursor" or "topline"
+        separator = '─', -- you can add a line between context and code
+      }
+    end,
+  },
   { -- Autoformat
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
