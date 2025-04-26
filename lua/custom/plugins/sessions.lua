@@ -14,7 +14,7 @@ return {
         theme_conf = { border = true },
         previewer = false,
       },
-      vim.keymap.set('n', '<leader>sss', require('auto-session.session-lens').search_session, { desc = '[S]earch [S]ession[S]' }),
+      vim.keymap.set('n', '<leader>sss', require('auto-session.session-lens').search_session, { desc = '[S]earch [S]aved [S]essions' }),
     }
   end,
 }
