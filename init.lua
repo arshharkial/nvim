@@ -309,6 +309,7 @@ vim.opt.isfname:append '@-@'
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = '80'
+
 local autocmd = vim.api.nvim_create_autocmd
 autocmd('LspAttach', {
   callback = function(e)
@@ -885,6 +886,9 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'vale',
+        'prettier',
+        'pyright',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -922,16 +926,16 @@ require('lazy').setup({
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
-    },
+    -- keys = {
+    --   {
+    --     '<leader>f',
+    --     function()
+    --       require('conform').format { async = true, lsp_format = 'fallback' }
+    --     end,
+    --     mode = '',
+    --     desc = '[F]ormat buffer',
+    --   },
+    -- },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
