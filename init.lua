@@ -114,9 +114,9 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- vim.schedule(function()
+--   vim.opt.clipboard = 'unnamedplus'
+-- end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -220,7 +220,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>p', [["+p]])
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
 
-vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [[_d]])
 
 -- This is going to get me cancelled
 vim.keymap.set('i', '<C-c>', '<Esc>')
@@ -247,7 +247,7 @@ vim.keymap.set('n', '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>')
 -- end)
 
 -- Create Empty Buffer
-vim.keymap.set('n', '<leader>nb', ':enew<CR>', {})
+vim.keymap.set('n', '<leader>nb', ':enew<CR>', { silent = true, desc = '[N]ew [B]uffer' })
 
 vim.keymap.set('n', '<leader>ct', ':CloakToggle<CR>', { silent = true, desc = '[C]loak [T]oggle' })
 
@@ -943,7 +943,7 @@ require('lazy').setup({
           return nil
         else
           return {
-            timeout_ms = 500,
+            timeout_ms = 50000,
             lsp_format = 'fallback',
           }
         end
@@ -951,10 +951,12 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'ruff_format' },
+        python = { 'ruff' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascript = { 'prettierd', 'prettier' },
+        json = { 'prettierd', 'prettier' },
+        markdown = { 'prettierd', 'prettier' },
         go = { 'gofmt' },
       },
     },
