@@ -553,7 +553,16 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        file_ignore_patterns = {
+          'node_modeules',
+          'venv',
+          'git',
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -840,7 +849,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         ruff = {},
         -- rust_analyzer = {},
@@ -885,6 +894,10 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'ruff',
+        'gopls',
+        'prettierd',
+        'prettier',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -957,7 +970,7 @@ require('lazy').setup({
         javascript = { 'prettierd', 'prettier' },
         json = { 'prettierd', 'prettier' },
         markdown = { 'prettierd', 'prettier' },
-        go = { 'gofmt' },
+        go = { 'gopls' },
       },
     },
   },
