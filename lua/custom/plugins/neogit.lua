@@ -1,9 +1,22 @@
 return {
-  'TimUntersberger/neogit',
-  cmd = 'Neogit',
+  'NeogitOrg/neogit',
+  dependencies = {
+    'nvim-lua/plenary.nvim', -- required
+    'sindrets/diffview.nvim', -- optional - Diff integration
+
+    -- Only one of these is needed.
+    'nvim-telescope/telescope.nvim', -- optional
+  },
   config = function()
     require('neogit').setup {
-      kind = 'split', -- opens neogit in a split
+      kind = 'floating', -- opens neogit in a split
+      floating = {
+        relative = 'editor',
+        width = 0.9,
+        height = 0.9,
+        style = 'minimal',
+        border = 'rounded',
+      },
       signs = {
         -- { CLOSED, OPENED }
         section = { '', '' },
