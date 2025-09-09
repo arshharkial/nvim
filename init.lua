@@ -266,7 +266,7 @@ vim.keymap.set('n', '<leader>[', function()
   require('todo-comments').jump_prev()
 end, { desc = 'Previous todo comment' })
 
-vim.keymap.set('n', '<leader>pt', ':TodoTelescope<CR>', { silent = true })
+vim.keymap.set('n', '<leader>st', ':TodoTelescope<CR>', { silent = true, desc = '[S]earch [T]odo Telescope' })
 vim.keymap.set('n', '<leader>db', ':DBUI<CR>', { silent = true })
 -- vim.keymap.set("n", "<M-.>", "<C-w>+<CR>", { noremap = false, silent = true })
 -- vim.keymap.set("n", "<M-,>", "<C-w>-<CR>", { noremap = false, silent = true })
@@ -1091,7 +1091,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-day'
     end,
   },
 
