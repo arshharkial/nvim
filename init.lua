@@ -553,19 +553,21 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        file_ignore_patterns = {
-          'node_modeules',
-          'venv',
-          'git',
-        },
-        pickers = {
-          find_files = {
-            hidden = true,
+        defaults = {
+          file_ignore_patterns = {
+            'node_modules',
+            'venv',
+            'git',
           },
-        },
-        extensions = {
-          ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
+          pickers = {
+            find_files = {
+              hidden = true,
+            },
+          },
+          extensions = {
+            ['ui-select'] = {
+              require('telescope.themes').get_dropdown(),
+            },
           },
         },
       }
